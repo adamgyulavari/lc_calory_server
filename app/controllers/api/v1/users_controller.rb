@@ -1,6 +1,7 @@
 class Api::V1::UsersController < Api::V1::ApiController
   skip_before_action :doorkeeper_authorize!, only: :create
   skip_before_action :authenticate_user!, only: :create
+  skip_before_action :verify_authenticity_token, only: :create
 
   def index
     render json: current_user.to_json
