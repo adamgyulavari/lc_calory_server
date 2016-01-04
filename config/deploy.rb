@@ -64,10 +64,6 @@ set(:symlinks, [
   {
     source: "log_rotation",
    link: "/etc/logrotate.d/#{fetch(:full_app_name)}"
-  },
-  {
-    source: "monit",
-    link: "/etc/monit/conf.d/#{fetch(:full_app_name)}.conf"
   }
 ])
 
