@@ -2,6 +2,7 @@
 lock '3.4.0'
 
 set :application, 'lc_calory'
+set :deploy_user, 'deployer'
 set :repo_url, 'git@github.com:adamgyulavari/lc_calory_server.git'
 
 # Default branch is :master

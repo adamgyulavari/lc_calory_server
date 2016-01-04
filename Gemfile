@@ -32,7 +32,6 @@ gem 'doorkeeper'
 
 # Use Unicorn as the app server
 gem 'unicorn'
-gem 'sshkit-sudo'
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.4.0'
 
