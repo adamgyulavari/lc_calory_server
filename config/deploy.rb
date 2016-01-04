@@ -39,7 +39,6 @@ set(:config_files, %w(
   nginx.conf
   database.example.yml
   log_rotation
-  monit
   unicorn.rb
   unicorn_init.sh
 ))
