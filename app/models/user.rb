@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :entries
 
+  validates :goal, numericality: { greater_than_or_equal_to: 0 }
+
   def to_json
     { email: email, id: id, entry_count: entries.count, goal: goal }.to_json
   end

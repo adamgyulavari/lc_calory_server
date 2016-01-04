@@ -7,7 +7,7 @@ class Api::V1::EntriesController < Api::V1::ApiController
   def create
     entry = Entry.new(entry_params)
     entry.user = current_user
-    if entry.save
+    if @entry.save
       render json: wrapper(latest), status: 201
     else
       render json: { errors: entry.errors }, status: 422
@@ -31,13 +31,13 @@ class Api::V1::EntriesController < Api::V1::ApiController
   private
 
   def latest
-    entries = current_user.entries
-    entries = entries.from_date(params[:from_date]) if params[:from_date] && !params[:from_date].nil?
-    entries = entries.to_date(params[:to_date]) if params[:to_date] && !params[:to_date].nil?
-    entries = entries.from_time(params[:from_time]) if params[:from_time] && params[:from_time] != "0"
-    entries = entries.to_time(params[:to_time]) if params[:to_time] && params[:to_time] != "0"
-    entries = entries.latest(10)
-    entries
+    @entries = current_user.entries
+    @entries = @entries.from_date(params[:from_date]) if params[:from_date] && !params[:from_date].nil?
+    @entries = @entries.to_date(params[:to_date]) if params[:to_date] && !params[:to_date].nil?
+    @entries = @entries.from_time(params[:from_time]) if params[:from_time] && params[:from_time] != "0"
+    @entries = @entries.to_time(params[:to_time]) if params[:to_time] && params[:to_time] != "0"
+    @entries = @entries.latest(10)
+    @entries
   end
 
   def wrapper(array)
